@@ -57,16 +57,20 @@ func (g *GeoIP) Apply(metrics ...telegraf.Metric) []telegraf.Metric {
                         continue
                     }
                     if len(lookup.DestCountry) > 0 {
-                        point.AddField(lookup.DestCountry, record.Country.ISOCode)
+                        point.AddField(lookup.DestCountry, record.Country.ISOCode);
+                        point.AddTag(lookup.DestCountry, record.Country.ISOCode)
                     }
                     if len(lookup.DestCity) > 0 {
                         point.AddField(lookup.DestCity, record.City.Names["en"])
+                        point.AddTag(lookup.DestCity, record.City.Names["en"])
                     }
                     if len(lookup.DestLat) > 0 {
                         point.AddField(lookup.DestLat, record.Location.Latitude)
+                        point.AddTag(lookup.DestLat, fmt.Sprint(record.Location.Latitude))
                     }
                     if len(lookup.DestLon) > 0 {
                         point.AddField(lookup.DestLon, record.Location.Longitude)
+                        point.AddTag(lookup.DestLon, fmt.Sprint(record.Location.Longitude))
                     }
 
                 }
@@ -80,9 +84,8 @@ func (g *GeoIP) Init() error {
     r, err := geoip2.NewCityReaderFromFile(g.DBPath)
     if err != nil {
         return fmt.Errorf("Error opening GeoIP database: %v", err)
-    } else {
-        reader = r
     }
+    reader = r
     return nil
 }
 
