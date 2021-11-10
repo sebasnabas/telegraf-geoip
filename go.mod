@@ -1,4 +1,4 @@
-module github.com/a-bali/telegraf-geoip
+module github.com/sebasnabas/telegraf-geoip
 
 go 1.14
 

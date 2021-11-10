@@ -5,7 +5,7 @@ import (
     "fmt"
     "os"
 
-    _ "github.com/a-bali/telegraf-geoip/plugins/processors/geoip"
+    _ "github.com/sebasnabas/telegraf-geoip/plugins/processors/geoip"
 
     "github.com/influxdata/telegraf/plugins/common/shim"
 )
