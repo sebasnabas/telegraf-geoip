@@ -52,6 +52,7 @@ func (g *GeoIP) Apply(metrics ...telegraf.Metric) []telegraf.Metric {
             if lookup.Field != "" {
                 if value, ok := point.GetField(lookup.Field); ok {
                     record, err := reader.Lookup(net.ParseIP(value.(string)))
+                    point.AddTag(lookup.Field, value.(string))
                     if err != nil {
                         g.Log.Errorf("GeoIP lookup error: %v", err)
                         continue
