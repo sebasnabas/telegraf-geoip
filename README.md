@@ -1,6 +1,6 @@
 # Telegraf GeoIP processor plugin
 
-This processor plugin for [telegraf](https://github.com/influxdata/telegraf) looks up IP addresses in the [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) database and adds the respective ISO country code, city name, latitude and longitude as new fields to the output.
+This processor plugin for [telegraf](https://github.com/influxdata/telegraf) looks up IP addresses in the [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) database and adds the respective ISO country code, city name, latitude and longitude as new fields and tags to the output.
 
 # Installation
 
